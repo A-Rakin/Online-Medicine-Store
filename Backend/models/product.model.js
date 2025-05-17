@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-//Product Schema
+//Product Schema or product model
 
 const medicineSchema = new mongoose.Schema({
   name: {
