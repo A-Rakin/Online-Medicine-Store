@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+//Product Schema
 
 const medicineSchema = new mongoose.Schema({
   name: {
