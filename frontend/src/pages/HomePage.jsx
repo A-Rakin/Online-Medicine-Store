@@ -47,7 +47,7 @@ const HomePage = ({ addToCart }) => {
       prescription_required: false,
       description: "Relieves mild to moderate pain and fever.",
       dosage: "Take 1-2 tablets every 4-6 hours as needed.",
-      image: "https://via.placeholder.com/300x200?text=Paracetamol",
+      image: "/images/paracetamol.jpg",
     },
     {
       id: 2,
@@ -58,7 +58,7 @@ const HomePage = ({ addToCart }) => {
       prescription_required: true,
       description: "Treats bacterial infections.",
       dosage: "Take 1 capsule 3 times daily for 5-7 days.",
-      image: "https://via.placeholder.com/300x200?text=Amoxicillin",
+      image:"/images/amoxicillin.jpg",
     },
     {
       id: 3,
@@ -69,7 +69,7 @@ const HomePage = ({ addToCart }) => {
       prescription_required: false,
       description: "Reduces inflammation and pain.",
       dosage: "Take 1 tablet every 6-8 hours with food.",
-      image: "https://via.placeholder.com/300x200?text=Ibuprofen",
+      image: "/images/ibuprofen.jpg",
     },
     {
       id: 4,
@@ -80,7 +80,7 @@ const HomePage = ({ addToCart }) => {
       prescription_required: false,
       description: "Relieves allergy symptoms like sneezing and itching.",
       dosage: "Take 1 tablet daily as needed.",
-      image: "https://via.placeholder.com/300x200?text=Cetirizine",
+      image: "/images/cetirizine.jpg",
     },
     {
       id: 5,
@@ -91,7 +91,7 @@ const HomePage = ({ addToCart }) => {
       prescription_required: false,
       description: "Reduces stomach acid and treats heartburn.",
       dosage: "Take 1 capsule daily before a meal.",
-      image: "https://via.placeholder.com/300x200?text=Omeprazole",
+      image: "/images/omeprazole.jpg",
     },
     {
       id: 6,
@@ -102,7 +102,7 @@ const HomePage = ({ addToCart }) => {
       prescription_required: true,
       description: "Treats bacterial infections like pneumonia.",
       dosage: "Take 1 tablet daily for 3 days.",
-      image: "https://via.placeholder.com/300x200?text=Azithromycin",
+      image: "/images/azithromycin.jpg",
     },
   ];
 
