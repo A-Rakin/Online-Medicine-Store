@@ -9,6 +9,8 @@ import SignupPage from "./pages/SignupPage";
 import LoginPage from "./pages/LoginPage";
 import MedicineDetailsPage from "./pages/MedicineDetailsPage";
 import Navbar from "./components/Navbar";
+import AdminPanel from "./pages/AdminPanel"; // Import AdminPanel
+import ProtectedRoute from "./components/ProtectedRoute"; // Import ProtectedRoute
 
 function App() {
   const [cart, setCart] = useState(() => {
@@ -46,6 +48,14 @@ function App() {
         <Route path="/signup" element={<SignupPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/medicine/:id" element={<MedicineDetailsPage />} />
+        <Route
+          path="/admin"
+          element={
+            <ProtectedRoute>
+              <AdminPanel />
+            </ProtectedRoute>
+          }
+        /> {/* Added admin route */}
       </Routes>
     </Box>
   );

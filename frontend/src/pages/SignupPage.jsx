@@ -20,6 +20,7 @@ const SignupPage = () => {
     name: "",
     email: "",
     password: "",
+    role: "user", // Default role
   });
 
   const handleChange = (e) => {
@@ -51,6 +52,9 @@ const SignupPage = () => {
     // Add new user to the array and save to localStorage
     storedUsers.push(user);
     localStorage.setItem("users", JSON.stringify(storedUsers));
+
+    // Save user role to localStorage for ProtectedRoute
+    localStorage.setItem("userRole", user.role);
 
     // Show success message and redirect to homepage
     toast({
@@ -99,6 +103,18 @@ const SignupPage = () => {
             value={user.password}
             onChange={handleChange}
             placeholder="Enter your password"
+            required
+          />
+        </FormControl>
+
+        {/* Hidden role field for testing */}
+        <FormControl>
+          <FormLabel>Role (For Testing)</FormLabel>
+          <Input
+            name="role"
+            value={user.role}
+            onChange={handleChange}
+            placeholder="Enter role (user/admin)"
             required
           />
         </FormControl>

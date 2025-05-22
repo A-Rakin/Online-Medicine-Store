@@ -17,8 +17,14 @@ import {
   Image,
   HStack,
   IconButton,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure,
 } from "@chakra-ui/react";
-import { Link } from "react-router-dom";
 import { FaPills, FaMobileAlt, FaDesktop } from "react-icons/fa";
 
 const HomePage = ({ addToCart }) => {
@@ -33,8 +39,12 @@ const HomePage = ({ addToCart }) => {
   const cardBorder = useColorModeValue("gray.100", "gray.600");
 
   // View toggle state
-  const [viewMode, setViewMode] = useState("desktop"); // "desktop" or "mobile"
+  const [viewMode, setViewMode] = useState("desktop");
   const containerWidth = viewMode === "mobile" ? "375px" : "container.lg";
+
+  // Modal state
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [selectedMedicine, setSelectedMedicine] = useState(null);
 
   // Initial mock data
   const initialMedicines = [
@@ -58,7 +68,7 @@ const HomePage = ({ addToCart }) => {
       prescription_required: true,
       description: "Treats bacterial infections.",
       dosage: "Take 1 capsule 3 times daily for 5-7 days.",
-      image:"/images/amoxicillin.jpg",
+      image: "/images/amoxicillin.jpg",
     },
     {
       id: 3,
@@ -146,6 +156,12 @@ const HomePage = ({ addToCart }) => {
       duration: 3000,
       isClosable: true,
     });
+  };
+
+  // Handle view details
+  const handleViewDetails = (medicine) => {
+    setSelectedMedicine(medicine);
+    onOpen();
   };
 
   return (
@@ -291,11 +307,10 @@ const HomePage = ({ addToCart }) => {
                   </Text>
                   <HStack w="full" justify="space-between">
                     <Button
-                      as={Link}
-                      to={`/medicines/${medicine.id}`}
                       colorScheme="blue"
                       variant="outline"
                       size="sm"
+                      onClick={() => handleViewDetails(medicine)}
                       aria-label={`View details of ${medicine.name}`}
                     >
                       View Details
@@ -314,6 +329,50 @@ const HomePage = ({ addToCart }) => {
               </Box>
             ))}
           </SimpleGrid>
+        )}
+
+        {/* Modal for Medicine Details */}
+        {selectedMedicine && (
+          <Modal isOpen={isOpen} onClose={onClose} isCentered>
+            <ModalOverlay />
+            <ModalContent>
+              <ModalHeader>{selectedMedicine.name}</ModalHeader>
+              <ModalCloseButton />
+              <ModalBody>
+                <VStack align="start" spacing={2} w="full">
+                  <Image
+                    src={selectedMedicine.image}
+                    alt={`${selectedMedicine.name} image`}
+                    w="full"
+                    h="150px"
+                    objectFit="cover"
+                    borderRadius="md"
+                    fallbackSrc="https://via.placeholder.com/300x150?text=Medicine"
+                  />
+                  <Text fontSize="lg">{selectedMedicine.description}</Text>
+                  <Text>
+                    <strong>Category:</strong> {selectedMedicine.category}
+                  </Text>
+                  <Text>
+                    <strong>Price:</strong> ${selectedMedicine.price}
+                  </Text>
+                  <Text>
+                    <strong>Prescription:</strong>{" "}
+                    {selectedMedicine.prescription_required ? "Required" : "Not Required"}
+                  </Text>
+                  <Text>
+                    <strong>Stock:</strong>{" "}
+                    {selectedMedicine.stock > 0
+                      ? `${selectedMedicine.stock} available`
+                      : "Out of Stock"}
+                  </Text>
+                  <Text>
+                    <strong>Dosage Instructions:</strong> {selectedMedicine.dosage}
+                  </Text>
+                </VStack>
+              </ModalBody>
+            </ModalContent>
+          </Modal>
         )}
       </VStack>
     </Container>
