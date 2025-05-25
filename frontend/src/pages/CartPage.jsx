@@ -1,12 +1,24 @@
-import { Box, Heading, Text, VStack, Button, Flex, Link as ChakraLink, Container } from "@chakra-ui/react";
+import { useState } from "react";
+import {
+  Box,
+  Heading,
+  Text,
+  VStack,
+  Button,
+  Flex,
+  Link as ChakraLink,
+  Container,
+} from "@chakra-ui/react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const CartPage = ({ cart, setCart }) => {
-  console.log("CartPage rendering, cart:", cart); // Debug log
+  const [loading, setLoading] = useState(false);
 
   const totalPrice = cart
     ? cart.reduce((total, item) => total + item.price * item.quantity, 0).toFixed(2)
     : 0;
+
   const totalItems = cart
     ? cart.reduce((total, item) => total + item.quantity, 0)
     : 0;
@@ -29,8 +41,43 @@ const CartPage = ({ cart, setCart }) => {
     setCart([]);
   };
 
+  const handleCheckout = async () => {
+    if (!cart || cart.length === 0) {
+      alert("Your cart is empty.");
+      return;
+    }
+
+    const amount = totalPrice;
+    const name = "Test User"; // Replace with real user name if available
+    const email = "test@example.com"; // Replace with real email
+    const phone = "017XXXXXXXX"; // Replace with real phone
+
+    setLoading(true);
+
+    try {
+      const res = await axios.post("http://localhost:5000/api/payment/initiate", {
+        amount,
+        name,
+        email,
+        phone,
+        cart
+      });
+
+      const { url } = res.data;
+      if (url) {
+        window.location.href = url; // Redirect to SSLCommerz
+      } else {
+        alert("Failed to get payment URL.");
+      }
+    } catch (err) {
+      console.error("Payment initiation failed:", err);
+      alert("Checkout failed. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
   if (!cart) {
-    console.log("Cart is undefined or null");
     return (
       <Container maxW="container.lg" py={10}>
         <VStack spacing={4}>
@@ -140,7 +187,12 @@ const CartPage = ({ cart, setCart }) => {
                 <Text>
                   <strong>Total Price:</strong> ${totalPrice}
                 </Text>
-                <Button colorScheme="green" w="full">
+                <Button
+                  colorScheme="green"
+                  w="full"
+                  onClick={handleCheckout}
+                  isLoading={loading}
+                >
                   Proceed to Checkout
                 </Button>
                 <ChakraLink as={Link} to="/" color="blue">
