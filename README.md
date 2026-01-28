@@ -110,25 +110,9 @@ Contributions are welcome! Please follow these steps:
 5. Open a Pull Request
 
 ## Screenshots
-
-<div align="center">
-
-### Homepage
-<img src="Screenshot_29-1-2026_0432_localhost.jpeg" alt="Homepage" width="700"/>
-
-### Product Listing
-<img src="Screenshot_29-1-2026_04244_localhost.jpeg" alt="Product Listing" width="700"/>
-
-### Medicine Details
-<img src="Screenshot_29-1-2026_04229_localhost.jpeg" alt="Medicine Details" width="700"/>
-
-### Shopping Cart
-<img src="Screenshot_29-1-2026_0428_localhost.jpeg" alt="Shopping Cart" width="700"/>
-
-### Admin Dashboard
-<img src="Screenshot_29-1-2026_04036_localhost.jpeg" alt="Admin Dashboard" width="700"/>
-
-</div>
+![Screenshot_29-1-2026_04036_localhost](https://github.com/user-attachments/assets/619c5b64-a30b-45cd-a357-684d81ce7327)
+![Screenshot_29-1-2026_04244_localhost](https://github.com/user-attachments/assets/8ecf5b34-7871-4f11-9aac-fca9625a00d5)
+![Screenshot_29-1-2026_0432_localhost](https://github.com/user-attachments/assets/aa96853f-e685-448c-92ad-6303b11e3a24)
 
 ## Contributors
 
@@ -140,7 +124,7 @@ Contributions are welcome! Please follow these steps:
 - Product routing and controller implementation
 - Environment variables and security configuration
 - Package management and dependency updates
-- Project documentation
+
 
 ### Shamsun Nahar Nitu (Frontend Developer)
 **GitHub:** [@Shamsun-Nahar-Nitu](https://github.com/Shamsun-Nahar-Nitu)  
@@ -150,7 +134,7 @@ Contributions are welcome! Please follow these steps:
 - Medicine image integration
 - User interface improvements
 - Homepage and index page updates
-- Screenshot documentation for README
+- Documentation
 
 ### Noshin Tabassum (Full Stack Developer)
 **GitHub:** [@tabazzssum](https://github.com/tabazzssum)  
@@ -161,7 +145,7 @@ Contributions are welcome! Please follow these steps:
 - Server configuration and backend updates
 - Node modules cleanup and project optimization
 - Bug fixes and issue resolution
-- Initial README creation
+
 
 ## License
 
